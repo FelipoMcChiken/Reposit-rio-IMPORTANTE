@@ -1,3 +1,8 @@
+/* IMPORTAÇÃO DA FONTE */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+
 /* CONFIGURAÇÃO GERAL */
 
 * {
@@ -6,6 +11,12 @@
 
 
 /* CABEÇALHO */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
 
 .cabecalho {
     width: 100%;
@@ -50,14 +61,21 @@
     flex-direction: column;
 }
 
+/* MESMA FONTE DOS LINKS DO MENU */
+
+.logo strong,
+.logo small {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    color: #146c43;
+}
+
 .logo strong {
     font-size: 21px;
-    color: #146c43;
 }
 
 .logo small {
     font-size: 11px;
-    color: #146c43;
 }
 
 
@@ -70,17 +88,31 @@
 }
 
 .menu a {
+    display: inline-block;
+
     color: #343633;
     text-decoration: none;
 
+    /* FONTE DOS LINKS DO MENU */
+    font-family: "Space Grotesk", sans-serif;
     font-size: 15px;
     font-weight: 500;
 
-    transition: 0.3s;
+    transition: 
+        color 0.3s ease,
+        transform 0.3s ease,
+        text-shadow 0.3s ease;
 }
+
+
+/* EFEITO AO PASSAR O MOUSE */
 
 .menu a:hover {
     color: #159447;
+
+    transform: translateY(-5px);
+
+    text-shadow: 0 5px 10px rgba(21, 148, 71, 0.45);
 }
 
 
