@@ -267,3 +267,61 @@ body {
         font-size: 16px;
     }
 }
+/* SEÇÃO ODS 13: IMAGEM E TEXTO */
+
+.ods13 {
+    width: 85%;
+    max-width: 1100px;
+    margin: 70px auto;
+
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.ods13-texto {
+    flex: 1;
+    min-width: 0;
+}
+
+.ods13-texto h2 {
+    margin: 18px 0;
+    color: #315c19;
+    font-size: 42px;
+    line-height: 1.15;
+}
+
+.texto-ods13 {
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* EM TELAS ESTREITAS */
+
+@media (max-width: 750px) {
+    .ods13 {
+        width: 90%;
+        margin: 50px auto;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    .ods13 .imagem-destaque {
+        width: 100%;
+        max-width: 500px;
+        flex-basis: auto;
+        margin: 0 auto;
+    }
+
+    .ods13-texto h2 {
+        font-size: 34px;
+    }
+
+    .texto-ods13 {
+        font-size: 16px;
+    }
+}
