@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
     
 </head>
+
 <body>
 
 <header class="cabecalho">
@@ -52,7 +53,7 @@
 
     <figure class="imagem-destaque">
         <img src="Outras páginas/Imagens ilustrativas/Imagemilustrativa13.png" alt="Medidas para combater as mudança climáticas">
-        <figcaption>Uma frase curta sobre a imagem</figcaption>
+        <figcaption></figcaption>
     </figure>
 
 </section>
@@ -95,6 +96,21 @@ Mas combater as mudanças climáticas não é responsabilidade apenas dos govern
     </div>
 
 </section>
+<script>
+    const cabecalho = document.querySelector(".cabecalho");
+    let ultimaPosicao = window.scrollY;
 
+    window.addEventListener("scroll", () => {
+        const posicaoAtual = window.scrollY;
+
+        if (posicaoAtual > ultimaPosicao && posicaoAtual > 100) {
+            cabecalho.classList.add("escondido");
+        } else {
+            cabecalho.classList.remove("escondido");
+        }
+
+        ultimaPosicao = posicaoAtual;
+    });
+</script>
 </body>
 </html>
