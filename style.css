@@ -1,7 +1,7 @@
 /* CONFIGURAÇÃO GERAL */
 
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclui bordas e espaçamentos no tamanho dos elementos */
 }
 
 html,
@@ -26,7 +26,7 @@ body {
     padding: 0 35px;
     margin: 20px auto;
 
-    display: flex;
+    display: flex; /* Organiza o logo e o menu na mesma linha */
     align-items: center;
     justify-content: space-between;
 
@@ -35,9 +35,16 @@ body {
     border-radius: 14px;
     box-shadow: 0 5px 0 #315c19;
 
-    position: sticky;
+    position: sticky; /* Mantém o cabeçalho visível durante a rolagem */
     top: 15px;
-    z-index: 1000;
+    z-index: 1000; /* Mantém o cabeçalho à frente do restante da página */
+
+    transition: transform 0.35s ease; /* Suaviza o movimento para cima e para baixo */
+}
+
+/* Esta classe será adicionada pelo JavaScript quando você rolar para baixo */
+.cabecalho.escondido {
+    transform: translateY(calc(-100% - 30px));
 }
 
 
@@ -46,7 +53,7 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px; /* Espaço entre o ícone e o nome */
 
     color: #164b35;
     text-decoration: none;
@@ -58,7 +65,7 @@ body {
 
 .logo div {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Coloca ODS e Agenda 2030 um abaixo do outro */
 }
 
 .logo strong,
@@ -83,24 +90,48 @@ body {
 .menu {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 30px; /* Espaço entre os links */
 }
 
 .menu a {
     display: inline-block;
+    position: relative; /* Serve de referência para a barrinha */
 
     color: #343633;
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;
 
-    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.menu a:hover {
+/* A barrinha fica escondida até o link ser selecionado */
+.menu a::after {
+    content: ""; /* Cria a barrinha sem adicionar texto */
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+
+    width: 100%;
+    height: 3px;
+    background-color: #159447;
+    border-radius: 3px;
+
+    transform: scaleX(0); /* Comprime a barrinha até ela desaparecer */
+    transition: transform 0.3s ease;
+}
+
+/* Muda a cor quando o mouse passa ou quando o link recebe foco pelo teclado */
+.menu a:hover,
+.menu a:focus-visible {
     color: #159447;
-    transform: translateY(-5px);
-    text-shadow: 0 5px 10px rgba(21, 148, 71, 0.45);
+    transform: translateY(-3px);
+}
+
+/* Mostra a barrinha ao passar o mouse ou selecionar o link pelo teclado */
+.menu a:hover::after,
+.menu a:focus-visible::after {
+    transform: scaleX(1);
 }
 
 
@@ -118,10 +149,11 @@ body {
 }
 
 .boas-vindas-texto {
-    flex: 1;
+    flex: 1; /* Usa o espaço disponível ao lado da imagem */
     min-width: 0;
 }
 
+/* Mantive as duas escritas para aceitar sua classe com ou sem o "n" extra */
 .identificacao,
 .indentificacao {
     color: #146c43;
@@ -146,7 +178,7 @@ body {
 }
 
 
-/* MOLDURA DA IMAGEM */
+/* MOLDURA DAS IMAGENS */
 
 .imagem-destaque {
     width: 45%;
@@ -162,9 +194,9 @@ body {
 }
 
 .imagem-destaque img {
-    display: block;
+    display: block; /* Evita um pequeno espaço abaixo da imagem */
     width: 100%;
-    height: auto;
+    height: auto; /* Mantém a proporção original da imagem */
     border-radius: 9px;
 }
 
@@ -177,50 +209,6 @@ body {
 }
 
 
-/* RESPONSIVIDADE */
-
-@media (max-width: 750px) {
-    .cabecalho {
-        height: auto;
-        padding: 15px 5%;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .menu {
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .menu a {
-        font-size: 13px;
-    }
-
-    .boas-vindas {
-        width: 90%;
-        margin: 50px auto;
-
-        flex-direction: column;
-        align-items: stretch;
-        gap: 24px;
-    }
-
-    .boas-vindas h1 {
-        font-size: 36px;
-    }
-
-    .texto-boas-vindas {
-        font-size: 16px;
-    }
-
-    .imagem-destaque {
-        width: 100%;
-        max-width: 500px;
-        flex-basis: auto;
-        margin: 0 auto;
-    }
-}
 /* SEÇÃO SOBRE OS ODS */
 
 .sobre-ods {
@@ -231,6 +219,7 @@ body {
 
 .cartao-ods {
     padding: 40px;
+
     background-color: #edf5e8;
     border: 3px solid #315c19;
     border-left: 10px solid #315c19;
@@ -250,24 +239,8 @@ body {
     line-height: 1.8;
 }
 
-@media (max-width: 750px) {
-    .sobre-ods {
-        width: 90%;
-    }
 
-    .cartao-ods {
-        padding: 25px;
-    }
-
-    .cartao-ods h2 {
-        font-size: 29px;
-    }
-
-    .texto-ods {
-        font-size: 16px;
-    }
-}
-/* SEÇÃO ODS 13: IMAGEM E TEXTO */
+/* SEÇÃO ODS 13: IMAGEM EM CIMA E TEXTO CENTRALIZADO */
 
 .ods13 {
     width: 85%;
@@ -275,65 +248,7 @@ body {
     margin: 70px auto;
 
     display: flex;
-    align-items: center;
-    gap: 45px;
-}
-
-.ods13-texto {
-    flex: 1;
-    min-width: 0;
-}
-
-.ods13-texto h2 {
-    margin: 18px 0;
-    color: #315c19;
-    font-size: 42px;
-    line-height: 1.15;
-}
-
-.texto-ods13 {
-    max-width: 600px;
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-
-/* EM TELAS ESTREITAS */
-
-@media (max-width: 750px) {
-    .ods13 {
-        width: 90%;
-        margin: 50px auto;
-
-        flex-direction: column;
-        align-items: stretch;
-        gap: 24px;
-    }
-
-    .ods13 .imagem-destaque {
-        width: 100%;
-        max-width: 500px;
-        flex-basis: auto;
-        margin: 0 auto;
-    }
-
-    .ods13-texto h2 {
-        font-size: 34px;
-    }
-
-    .texto-ods13 {
-        font-size: 16px;
-    }
-}
-/* ODS 13: imagem em cima e texto centralizado */
-
-.ods13 {
-    width: 85%;
-    max-width: 1100px;
-    margin: 70px auto;
-
-    display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Empilha a imagem e o texto */
     align-items: center;
     gap: 24px;
 
@@ -366,7 +281,66 @@ body {
     line-height: 1.7;
 }
 
+
+/* AJUSTES PARA TELAS PEQUENAS, COMO CELULARES */
+
 @media (max-width: 750px) {
+    .cabecalho {
+        height: auto;
+        padding: 15px 5px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu {
+        gap: 18px;
+        flex-wrap: wrap; /* Permite que os links ocupem mais de uma linha */
+        justify-content: center;
+    }
+
+    .menu a {
+        font-size: 13px;
+    }
+
+    .boas-vindas {
+        width: 90%;
+        margin: 50px auto;
+        flex-direction: column; /* Empilha o texto e a imagem */
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    .boas-vindas h1 {
+        font-size: 36px;
+    }
+
+    .texto-boas-vindas {
+        font-size: 16px;
+    }
+
+    .imagem-destaque {
+        width: 100%;
+        max-width: 500px;
+        flex-basis: auto;
+        margin: 0 auto;
+    }
+
+    .sobre-ods {
+        width: 90%;
+    }
+
+    .cartao-ods {
+        padding: 25px;
+    }
+
+    .cartao-ods h2 {
+        font-size: 29px;
+    }
+
+    .texto-ods {
+        font-size: 16px;
+    }
+
     .ods13 {
         width: 90%;
         margin: 50px auto;
