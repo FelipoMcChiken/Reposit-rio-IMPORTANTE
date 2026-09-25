@@ -325,3 +325,59 @@ body {
         font-size: 16px;
     }
 }
+/* ODS 13: imagem em cima e texto centralizado */
+
+.ods13 {
+    width: 85%;
+    max-width: 1100px;
+    margin: 70px auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    text-align: center;
+}
+
+.ods13 .imagem-destaque {
+    width: 100%;
+    max-width: 500px;
+    flex: none;
+    margin: 0 auto;
+}
+
+.ods13-texto {
+    width: 100%;
+    max-width: 760px;
+}
+
+.ods13-texto h2 {
+    margin: 18px 0;
+    color: #315c19;
+    font-size: 42px;
+    line-height: 1.15;
+}
+
+.texto-ods13 {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+@media (max-width: 750px) {
+    .ods13 {
+        width: 90%;
+        margin: 50px auto;
+        gap: 20px;
+    }
+
+    .ods13-texto h2 {
+        font-size: 34px;
+    }
+
+    .texto-ods13 {
+        font-size: 16px;
+    }
+}
