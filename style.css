@@ -355,3 +355,20 @@ body {
         font-size: 16px;
     }
 }
+
+/* Anima a imagem de boas-vindas */
+.boas-vindas .imagem-destaque {
+    animation: subir-e-aparecer 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes subir-e-aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
