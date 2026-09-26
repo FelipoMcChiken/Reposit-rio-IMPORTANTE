@@ -372,3 +372,10 @@ body {
         transform: translateY(0);
     }
 }
+.boas-vindas-texto {
+    flex: 1;
+    min-width: 0;
+
+    animation: subir-e-aparecer 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.2s;
+}
